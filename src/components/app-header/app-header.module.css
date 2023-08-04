@@ -2,26 +2,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1C1C21;
+    background-color: rgba(28, 28, 33, 1);
     max-width: 1920px;
     min-height: 88px;
     margin: 0 auto;
 }
 
-.navigation {
-    display: flex;
-    justify-content: space-between;
-}
-
-.list {
-    padding: 0;
-    margin: 0;
+.nav {
     list-style-type: none;
     display: grid;
+    justify-content: space-between;
     grid-template-columns: 1fr 290px 1fr;
     align-items: center;
     width: 1280px;
-    justify-content: space-between;
+    padding: 0;
+    margin: 0;
 }
 
 .columns {
@@ -34,10 +29,10 @@
 .link {
     display: grid;
     grid-template-columns: repeat(2, max-content);
+    align-content: center;
     gap: 8px;
     text-decoration: none;
-    align-content: center;
-    color: #F2F2F3;
+    color: rgba(242, 242, 243, 1);
 }
 
 .personal_account {
