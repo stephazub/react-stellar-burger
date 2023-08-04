@@ -19,14 +19,14 @@
     margin: 0;
 }
 
-.columns {
+.menus {
     display: grid;
     grid-template-columns: 178px 197px;
     grid-template-rows: 56px;
     gap: 8px;
 }
 
-.link {
+.block {
     display: grid;
     grid-template-columns: repeat(2, max-content);
     align-content: center;
@@ -35,7 +35,7 @@
     color: rgba(242, 242, 243, 1);
 }
 
-.personal_account {
+.login {
     display: grid;
     grid-template-columns: 207px;
     grid-template-rows: 56px;
