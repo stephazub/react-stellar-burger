@@ -21,12 +21,31 @@ function App() {
   
   console.log(ingredients);
 
+  const [item, setItem] = React.useState(false);
+  
+  const handleIngredientClick = (item) => {
+    setItem(item)
+    setOpenModal(!openModal);
+  }
+
+  const [openModal, setOpenModal] = React.useState(false);
+  
+  const handleOnButtonClick = () => {
+    setItem(false);
+    setOpenModal(!openModal);
+  }
+
+  const closeModal = () => {
+    setOpenModal(!openModal);
+  }
+  
+  
   return (
     <>
       <AppHeader />
       <main className={styles.main}>
-        <BurgerIngredients/>
-
+        <BurgerIngredients ingredients={ingredients} handleIngredientClick={handleIngredientClick} />
+        
       </main>
     </>
   );
