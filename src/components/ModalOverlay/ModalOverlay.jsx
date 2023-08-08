@@ -1,7 +1,7 @@
 import React from "react";
-import styles from './Overlay.module.css';
+import styles from './ModalOverlay.module.css'
 
-export function Overlay({ onClose }) {
+export default function Overlay({ onClose }) {
     
     const closeModal = (evt) => {
         if (evt.target.classList.contains(styles.overlay)) {

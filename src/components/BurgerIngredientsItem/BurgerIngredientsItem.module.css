@@ -1,7 +1,8 @@
 .item {
     display: grid;
     justify-items: center;
-    position: relative;   
+    position: relative;
+    cursor: pointer;   
 }
 
 .price {
