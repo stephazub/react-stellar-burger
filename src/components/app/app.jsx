@@ -33,7 +33,7 @@ function App() {
     setOpenModal(!openModal);
   }
   
-  const handleOnButtonClick = () => {
+  const handleOrderButtonClick = () => {
     setItem(false);
     setOpenModal(!openModal);
   }
@@ -48,10 +48,10 @@ function App() {
       <AppHeader />
       <main className={styles.main}>
         <BurgerIngredients ingredients={ingredients} handleIngredientClick={handleIngredientClick} />
-        <BurgerConstructor handleOnButtonClick={handleOnButtonClick} />
+        <BurgerConstructor handleOrderButtonClick={handleOrderButtonClick} />
       </main>
       {openModal && <Modal onClose={closeModal} >
-        {item ? <IngredientDetails ingredient={item} /> :
+        {Boolean(item) ? <IngredientDetails ingredient={item} /> :
           <OrderDetails />}
       </Modal>}
     </>
@@ -59,9 +59,3 @@ function App() {
 }
 
 export default App;
-
-
-/*{openModal && <Modal onClose={closeModal} >
-        {item ? <IngredientDetails ingredient={item} /> :
-          <OrderDetails />}
-      </Modal>}*/

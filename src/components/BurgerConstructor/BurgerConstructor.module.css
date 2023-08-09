@@ -32,7 +32,7 @@
 }
 
 .scroll {
-    height: 464px;
+    height: 400px;
     overflow: hidden;
     overflow-y: auto;
     overflow-x: hidden;

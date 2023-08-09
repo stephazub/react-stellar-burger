@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './BurgerConstructor.module.css';
 import { Button, CurrencyIcon, ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
-export default function BurgerConstructor({ handleOnButtonClick }) {
+export default function BurgerConstructor({ handleOrderButtonClick }) {
     return (
         <section className={`${styles.burger-constructor} mt-25`}>
             <ul className={`${styles.list} pl-3`}>
@@ -80,7 +80,7 @@ export default function BurgerConstructor({ handleOnButtonClick }) {
                     <p className="text text_type_digits-medium mr-2">610</p>
                     <CurrencyIcon type="primary" />
                 </div>
-                <Button onClick={handleOnButtonClick} type="primary" size="large" htmlType="button">Оформить заказ</Button>
+                <Button onClick={handleOrderButtonClick} type="primary" size="large" htmlType="button">Оформить заказ</Button>
             </div>
         </section>
     )

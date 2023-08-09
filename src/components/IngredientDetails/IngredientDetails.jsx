@@ -1,7 +1,8 @@
 import styles from './IngredientDetails.module.css';
-import { ingredientPropType } from '../../utils/prop-types';
+
 
 export default function IngredientDetails({ ingredient }) {
+  console.log(ingredient);
   return (
     <>
     <h2 className={`${styles.title} text text_type_main-large mt-10 ml-10`}>Детали ингредиента</h2>
@@ -31,6 +32,3 @@ export default function IngredientDetails({ ingredient }) {
   )
 }
 
-IngredientDetails.propTypes = {
-  ingredient: ingredientPropType.isRequired,
-}

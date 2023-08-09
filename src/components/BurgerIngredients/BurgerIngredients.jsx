@@ -2,8 +2,8 @@ import React from "react";
 import styles from './BurgerIngredients.module.css';
 import BurgerIngredientsTab from '../BurgerIngredientsTab/BurgerIngredientsTab';
 import BurgerIngredientsSets from '../BurgerIngredientsSets/BurgerIngredientsSets'
-/*import PropTypes from 'prop-types';
-import {ingredientPropType} from '../../utils/prop-types'*/
+import PropTypes from 'prop-types';
+import {ingredientPropType} from '../../utils/prop-types'
 
 export default function BurgerIngredients({ ingredients, handleIngredientClick}) {
     return (
@@ -15,6 +15,6 @@ export default function BurgerIngredients({ ingredients, handleIngredientClick})
     )
 };
 
-/*BurgerIngredients.propTypes = {
+BurgerIngredients.propTypes = {
     ingredients: PropTypes.arrayOf(ingredientPropType).isRequired,
-  }*/
+  }
