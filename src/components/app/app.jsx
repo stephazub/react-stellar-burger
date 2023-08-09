@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppHeader } from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients';
-import styles from './App.module.css';
+import styles from './app.module.css';
 import {ingredientsData} from '../api/api';
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import Modal  from '../Modal/Modal';
