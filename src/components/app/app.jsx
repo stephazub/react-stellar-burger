@@ -2,26 +2,21 @@ import React from 'react';
 import { AppHeader } from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients';
 import styles from './app.module.css';
-import {ingredientsData} from '../api/api';
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import Modal  from '../Modal/Modal';
 import OrderDetails from '../OrderDetails/OrderDetails';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
+import { useDispatch,useSelector } from 'react-redux';
+import { getBurgerIngredients } from '../../services/action/burgerIngredients';
 
 function App() {
-  const [ingredients, setIngedients] = React.useState([]);
-  
+  const dispatch = useDispatch();
+
   React.useEffect(() => {
-    ingredientsData.getData()
-      .then(({ success, data }) => {
-        if (success) {
-          setIngedients(data)
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, []);
+    dispatch(getBurgerIngredients())
+  }, [dispatch])
+
+  const ingredients = useSelector(state => state.burgerIngredients.burgerIngredients);
   
   console.log(ingredients);
   
