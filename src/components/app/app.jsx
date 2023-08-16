@@ -8,6 +8,11 @@ import OrderDetails from '../OrderDetails/OrderDetails';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
 import { useDispatch,useSelector } from 'react-redux';
 import { getBurgerIngredients } from '../../services/action/burgerIngredients';
+import { getOrderDetails } from '../../services/action/orderDetails';
+import { deleteIgredientDetails } from '../../services/action/ingredientDetails';
+import {useCallback} from 'react';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
 
 function App() {
   const dispatch = useDispatch();
@@ -19,19 +24,20 @@ function App() {
   const ingredients = useSelector(state => state.burgerIngredients.burgerIngredients);
   
   console.log(ingredients);
+
+  const openIngredientDetailsModal = useSelector(state => !!state.ingredientDetails.ingredientDetails);
+  const idIngredientsList = (ingredients.map((item) => item._id))
   
   const [openModal, setOpenModal] = React.useState(false);
-  const [item, setItem] = React.useState(false);
   
-  const handleIngredientClick = (item) => {
-    setItem(item)
-    setOpenModal(!openModal);
+  const handleOrderClick = () => {
+    setOpenModal(!openModal)
+    dispatch(getOrderDetails(idIngredientsList))
   }
-  
-  const handleOrderButtonClick = () => {
-    setItem(false);
-    setOpenModal(!openModal);
-  }
+
+  const closeIngredientsModal = useCallback(() => {
+    dispatch(deleteIgredientDetails())
+  }, [dispatch])
 
   const closeModal = () => {
     setOpenModal(!openModal);
@@ -39,17 +45,23 @@ function App() {
   
   
   return (
-    <>
+    <DndProvider backend={HTML5Backend}>
       <AppHeader />
       <main className={styles.main}>
-        <BurgerIngredients ingredients={ingredients} handleIngredientClick={handleIngredientClick} />
-        <BurgerConstructor handleOrderButtonClick={handleOrderButtonClick} />
+        <BurgerIngredients />
+        <BurgerConstructor handleOrderClick={handleOrderClick} />
       </main>
-      {openModal && <Modal onClose={closeModal} >
-        {Boolean(item) ? <IngredientDetails ingredient={item} /> :
-          <OrderDetails />}
-      </Modal>}
-    </>
+      {openIngredientDetailsModal && (
+        <Modal onClose={closeIngredientsModal}>
+          <IngredientDetails />
+        </Modal>
+      )}
+      {openModal && (
+        <Modal onClose={closeModal}>
+          <OrderDetails />
+        </Modal>
+      )}
+    </DndProvider>
   );
 }
 

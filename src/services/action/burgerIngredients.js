@@ -1,4 +1,4 @@
-import { ingredientsData } from "../../components/api/api";
+import { apiData } from "../../components/api/api";
 
 export const GET_BURGER_INGREDIENTS_REQUEST = 'GET_INGREDIENTS_REQUEST';
 export const GET_BURGER_INGREDIENTS_SUCCESS = 'GET_INGREDIENTS_SUCCESS';
@@ -8,7 +8,7 @@ const getBurgerIngredientsSuccess = (data) => ({ type: GET_BURGER_INGREDIENTS_SU
 
 export function getBurgerIngredients() {
     return (dispatch) =>
-    ingredientsData.getData()
+    apiData.getBurgerData()
         .then(({ data }) => {
              dispatch(getBurgerIngredientsSuccess(data));
         })
