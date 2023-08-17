@@ -1,34 +1,13 @@
 .burger-constructor {
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .list {
     margin-top: 0;
     margin-bottom: 0;
     list-style-type: none;
-}
-
-.ingredient {
-    display: grid;
-    grid-template-columns: max-content 536px;
-    gap: 8px;
-    align-items: center;
-}
-
-.price {
-    display: flex;
-    align-items: center;
-}
-
-.order {
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
-    grid-template-rows: 64px;
-    gap: 42px;
-    justify-content: end;
-    align-items: center;
 }
 
 .scroll {

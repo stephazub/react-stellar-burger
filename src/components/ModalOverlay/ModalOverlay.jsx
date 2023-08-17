@@ -1,7 +1,7 @@
-import React from "react";
 import styles from './ModalOverlay.module.css'
+import { PropTypes } from 'prop-types';
 
-export default function Overlay({ onClose }) {
+export default function ModalOverlay({ onClose }) {
     
     const closeModal = (evt) => {
         if (evt.target.classList.contains(styles.overlay)) {
@@ -13,4 +13,8 @@ export default function Overlay({ onClose }) {
         <div className={styles.overlay} onClick={closeModal}>
         </div>
     )
+}
+
+ModalOverlay.propTypes = {
+    onClose: PropTypes.func.isRequired
 }

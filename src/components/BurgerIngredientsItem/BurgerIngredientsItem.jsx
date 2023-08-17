@@ -1,6 +1,6 @@
 import styles from './BurgerIngredientsItem.module.css';
 import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-//import { ingredientType } from '../../utils/types';
+import { ingredientType } from '../../utils/prop-types';
 import { useDispatch } from 'react-redux';
 import { addIgredientDetails } from '../../services/action/ingredientDetails';
 import { useDrag } from 'react-dnd';
@@ -42,6 +42,6 @@ export default function BurgerIngredientsItem({ ingredient }) {
     )
 }
 
-/*BurgerIngredientsItem.propTypes = {
+BurgerIngredientsItem.propTypes = {
     ingredient: ingredientType.isRequired,
-}*/
+}

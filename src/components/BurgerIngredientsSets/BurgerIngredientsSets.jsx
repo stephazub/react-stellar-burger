@@ -15,31 +15,31 @@ export default function BurgerIngredientsSets() {
 
     useEffect(() => {
         if (tab === 'bun') {
-            bunRef.current.scrollIntoView()
+            bunRef.current.scrollIntoView({ behavior: 'smooth' })
         }
         if (tab === 'sauce') {
-            sauceRef.current.scrollIntoView()
+            sauceRef.current.scrollIntoView({ behavior: 'smooth' })
         }
         if (tab === 'main') {
-            mainRef.current.scrollIntoView()
+            mainRef.current.scrollIntoView({ behavior: 'smooth' })
         }
     }, [tab])
 
     useEffect(() => {
-        const headings = [
+        const parts = [
             bunRef.current,
             sauceRef.current,
             mainRef.current
         ]
-        const observer = new IntersectionObserver((headings) => {
-            headings.forEach((heading) => {
-                if (heading.target === bunRef.current) {
+        const observer = new IntersectionObserver((parts) => {
+            parts.forEach((part) => {
+                if (part.target === bunRef.current) {
                     dispatch(setActiveTab('bun'))
                 }
-                if (heading.target === sauceRef.current) {
+                if (part.target === sauceRef.current) {
                     dispatch(setActiveTab('sauce'))
                 }
-                if (heading.target === mainRef.current) {
+                if (part.target === mainRef.current) {
                     dispatch(setActiveTab('main'))
                 }
             })
@@ -47,9 +47,10 @@ export default function BurgerIngredientsSets() {
         },
             {
                 root: tabRef.current,
-                rootMargin: '0px 0px -90% 0px'
+                rootMargin: '0px',
+                threshold: 0.9
             })
-        headings.forEach((heading) => observer.observe(heading))
+            parts.forEach((part) => observer.observe(part))
 
     }, [dispatch])
 
@@ -57,19 +58,19 @@ export default function BurgerIngredientsSets() {
         <div className={`${styles.scroll} mt-10 pr-2`} ref={tabRef}>
             <div>
                 <h2 className="text text_type_main-medium  mb-6" ref={bunRef}>Булки</h2>
-                <ul className={`${styles.ingredients} pl-4`}>
-                    <BurgerIngredientsSet type='bun' />
+                <ul className={`${styles.ingredients} pl-4`} >
+                    <BurgerIngredientsSet type='bun'/>
                 </ul>
             </div>
             <div>
                 <h2 className="text text_type_main-medium mt-10 mb-6" ref={sauceRef}>Соусы</h2>
-                <ul className={`${styles.ingredients} pl-4`}>
+                <ul className={`${styles.ingredients} pl-4`} >
                     <BurgerIngredientsSet type='sauce' />
                 </ul>
             </div>
             <div>
                 <h2 className="text text_type_main-medium mt-10 mb-6" ref={mainRef}>Начинки</h2>
-                <ul className={`${styles.ingredients} pl-4`}>
+                <ul className={`${styles.ingredients} pl-4`} >
                     <BurgerIngredientsSet type='main' />
                 </ul>
             </div>

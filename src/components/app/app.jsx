@@ -25,12 +25,12 @@ function App() {
   
   console.log(ingredients);
 
-  const openIngredientDetailsModal = useSelector(state => !!state.ingredientDetails.ingredientDetails);
+  const openIngredientDetailsModal = useSelector(state => state.ingredientDetails.ingredientDetails);
   const idIngredientsList = (ingredients.map((item) => item._id))
   
   const [openModal, setOpenModal] = React.useState(false);
   
-  const handleOrderClick = () => {
+  const handleOrderButtonClick = () => {
     setOpenModal(!openModal)
     dispatch(getOrderDetails(idIngredientsList))
   }
@@ -49,9 +49,9 @@ function App() {
       <AppHeader />
       <main className={styles.main}>
         <BurgerIngredients />
-        <BurgerConstructor handleOrderClick={handleOrderClick} />
+        <BurgerConstructor handleOrderButtonClick={handleOrderButtonClick} />
       </main>
-      {openIngredientDetailsModal && (
+      {Boolean(openIngredientDetailsModal) && (
         <Modal onClose={closeIngredientsModal}>
           <IngredientDetails />
         </Modal>

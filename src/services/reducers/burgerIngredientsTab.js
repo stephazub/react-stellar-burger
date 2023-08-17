@@ -4,8 +4,8 @@ import {
 } from '../action/burgerIngredientsTab'
 
 const tabState = {
-    current: 'main',
-    scroll: 'main'
+    current: 'bun',
+    tab: 'bun'
 }
 
 export const ingredientsTabReducer = (state = tabState, action) => {
