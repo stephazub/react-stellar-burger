@@ -48,7 +48,7 @@ export default function BurgerIngredientsSets() {
             {
                 root: tabRef.current,
                 rootMargin: '0px',
-                threshold: 0.9
+                threshold: 1
             })
             parts.forEach((part) => observer.observe(part))
 
