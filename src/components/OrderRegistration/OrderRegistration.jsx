@@ -9,15 +9,15 @@ export function OrderRegistration({ handleOrderButtonClick }) {
     const main = useSelector(state => state.burgerConstructor.mainList)
     const buns = useSelector(state => state.burgerConstructor.bunsList)
 
-    const totalOrderAmount = useMemo(() => (
-        main.reduce((acc, { price }) => acc + price, 0) + (buns.reduce((acc, { price }) => acc + price, 0) * 2)
+    const sumOrder = useMemo(() => (
+        main.reduce((sum, { price }) => sum + price, 0) + (buns.reduce((sum, { price }) => sum + price, 0) * 2)
     ), [main, buns]);
 
     return (
         <div className={`${styles.order} mt-10 mr-4`}>
             <div className={styles.price}>
-                <p className="text text_type_digits-medium mr-2">{totalOrderAmount}</p>
-                <CurrencyIcon type="primary" />
+                <p className="text text_type_digits-medium mr-2">{sumOrder}</p>
+                <CurrencyIcon type="primary"  />
             </div>
             <Button onClick={handleOrderButtonClick} type="primary" size="large" htmlType="button">Оформить заказ</Button>
         </div>
@@ -25,5 +25,5 @@ export function OrderRegistration({ handleOrderButtonClick }) {
 }
 
 OrderRegistration.propTypes = {
-    handleOrderClick: PropTypes.func.isRequired
+    handleOrderButtonClick: PropTypes.func.isRequired
 }

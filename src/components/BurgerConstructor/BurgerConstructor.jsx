@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './BurgerConstructor.module.css';
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +6,7 @@ import { BurgerConstructorItem } from '../BurgerConstructorItem/BurgerConstructo
 import { OrderRegistration } from '../OrderRegistration/OrderRegistration';
 import { useDrop } from 'react-dnd';
 import { nanoid } from 'nanoid';
-//import { PropTypes } from 'prop-types';
+import { PropTypes } from 'prop-types';
 
 export default function BurgerConstructor({ handleOrderButtonClick }) {
     const dispatch = useDispatch()
@@ -37,61 +36,59 @@ export default function BurgerConstructor({ handleOrderButtonClick }) {
 
 
     return (
-        <section className={`${styles.burger-constructor} mt-25`} ref={dropIngredient}>
+        <section className={`${styles.burger - constructor} mt-25`} ref={dropIngredient}>
             <ul className={`${styles.list} pl-3`}>
-                {buns.map((element) => {
-                    if (element.type === 'bun')
+                {buns.map((el) => {
+                    if (el.type === 'bun')
                         return (
-                            <li className={`mb-4 ml-8`} key={element.id}>
+                            <li className={`mb-4 ml-8`} key={el.id}>
                                 <ConstructorElement
                                     type="top"
                                     isLocked={true}
-                                    text={`${element.name} (верх)`}
-                                    price={element.price}
-                                    thumbnail={element.image}
+                                    text={`${el.name} (верх)`}
+                                    price={el.price}
+                                    thumbnail={el.image}
                                 />
                             </li>
                         )
                 }
                 )}
                 <div className={`${styles.scroll} pr-2`}>
-                    {main.map((element, index) => {
-                        if (element.type !== 'bun')
+                    {main.map((el, index) => {
+                        if (el.type !== 'bun')
                             return (
                                 <BurgerConstructorItem
-                                    element={element}
+                                    element={el}
                                     index={index}
-                                    id={element.id}
-                                    key={element.id}
+                                    id={el.id}
+                                    key={el.id}
                                     deleteElement={deleteElement}
                                 />
                             )
                     }
                     )}
                 </div>
-                {buns.map((element) => {
-                    if (element.type === 'bun')
+                {buns.map((el) => {
+                    if (el.type === 'bun')
                         return (
-                            <li className={`mt-4 ml-8`} key={element.id}>
+                            <li className={`mt-4 ml-8`} key={el.id}>
                                 <ConstructorElement
                                     type="bottom"
                                     isLocked={true}
-                                    text={`${element.name} (низ)`}
-                                    price={element.price}
-                                    thumbnail={element.image}
+                                    text={`${el.name} (низ)`}
+                                    price={el.price}
+                                    thumbnail={el.image}
                                 />
                             </li>
                         )
                 }
                 )}
             </ul>
-            {buns.length > 0 ?
-                <OrderRegistration handleOrderButtonClick={handleOrderButtonClick} />
-                : null}
+            <OrderRegistration handleOrderButtonClick={handleOrderButtonClick} />
         </section>
     )
 }
 
-/*BurgerConstructor.propTypes = {
-    handleOrderClick: PropTypes.func.isRequired
-}*/
+BurgerConstructor.propTypes = {
+    handleOrderButtonClick: PropTypes.func.isRequired
+}

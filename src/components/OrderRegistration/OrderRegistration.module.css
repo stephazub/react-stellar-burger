@@ -4,7 +4,7 @@
     grid-template-rows: 64px;
     justify-content: end;
     align-items: center;
-    gap: 42px;
+    gap: 40px;
 }
 
 .price {

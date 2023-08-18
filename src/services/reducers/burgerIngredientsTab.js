@@ -4,7 +4,7 @@ import {
 } from '../action/burgerIngredientsTab'
 
 const tabState = {
-    current: 'bun',
+    current: 'sauce',
     tab: 'bun'
 }
 

@@ -1,4 +1,3 @@
-import React from "react";
 import {Tab} from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './BurgerIngredientsTab.module.css';
 import { setActiveTab, tabIngredients } from '../../services/action/burgerIngredientsTab';

@@ -23,7 +23,6 @@ function App() {
 
   const ingredients = useSelector(state => state.burgerIngredients.burgerIngredients);
   
-  console.log(ingredients);
 
   const openIngredientDetailsModal = useSelector(state => state.ingredientDetails.ingredientDetails);
   const idIngredientsList = (ingredients.map((item) => item._id))

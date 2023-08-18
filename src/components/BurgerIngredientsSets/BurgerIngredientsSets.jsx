@@ -23,23 +23,20 @@ export default function BurgerIngredientsSets() {
         if (tab === 'main') {
             mainRef.current.scrollIntoView({ behavior: 'smooth' })
         }
-    }, [tab])
+    }, [tab]);
 
     useEffect(() => {
-        const parts = [
-            bunRef.current,
-            sauceRef.current,
-            mainRef.current
-        ]
-        const observer = new IntersectionObserver((parts) => {
-            parts.forEach((part) => {
-                if (part.target === bunRef.current) {
+        const sets = [bunRef.current, sauceRef.current, mainRef.current]
+        
+        const observer = new IntersectionObserver((sets) => {
+            sets.forEach((set) => {
+                if (set.target === bunRef.current) {
                     dispatch(setActiveTab('bun'))
                 }
-                if (part.target === sauceRef.current) {
+                if (set.target === sauceRef.current) {
                     dispatch(setActiveTab('sauce'))
                 }
-                if (part.target === mainRef.current) {
+                if (set.target === mainRef.current) {
                     dispatch(setActiveTab('main'))
                 }
             })
@@ -50,7 +47,7 @@ export default function BurgerIngredientsSets() {
                 rootMargin: '0px',
                 threshold: 1
             })
-            parts.forEach((part) => observer.observe(part))
+            sets.forEach((set) => observer.observe(set))
 
     }, [dispatch])
 
