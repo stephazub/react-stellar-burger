@@ -1,7 +1,7 @@
-.app {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-color: #131316;
-  color: #f2f2f3;
-}
+.main {
+    display: grid;
+    max-width: 1240px;
+    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
