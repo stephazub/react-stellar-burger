@@ -1,4 +1,4 @@
-import { apiData } from "../../components/api/api";
+import { apiData } from "../../utils/api/api";
 import { clearConstructor } from "./burgerConstructor";
 
 export const GET_ORDER_DETAILS_REQUEST = 'GET_ORDER_REQUEST';

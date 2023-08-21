@@ -1,4 +1,4 @@
-import { apiData } from "../../components/api/api";
+import { apiData } from "../../utils/api/api";
 
 export const GET_BURGER_INGREDIENTS_REQUEST = 'GET_INGREDIENTS_REQUEST';
 export const GET_BURGER_INGREDIENTS_SUCCESS = 'GET_INGREDIENTS_SUCCESS';

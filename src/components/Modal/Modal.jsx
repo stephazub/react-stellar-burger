@@ -32,7 +32,7 @@ export default function Modal({ children, onClose }) {
                 {children}
             </div>
         </>,
-        document.body
+        document.getElementById('modals')
     )
 }
 
