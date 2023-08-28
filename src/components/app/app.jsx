@@ -2,41 +2,41 @@ import React from 'react';
 import { AppHeader } from '../AppHeader/AppHeader';
 import BurgerIngredients from '../BurgerIngredients/BurgerIngredients';
 import styles from './app.module.css';
-import {ingredientsData} from '../api/api';
 import BurgerConstructor from '../BurgerConstructor/BurgerConstructor';
 import Modal  from '../Modal/Modal';
 import OrderDetails from '../OrderDetails/OrderDetails';
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
+import { useDispatch,useSelector } from 'react-redux';
+import { getBurgerIngredients } from '../../services/action/burgerIngredients';
+import { getOrderDetails } from '../../services/action/orderDetails';
+import { deleteIgredientDetails } from '../../services/action/ingredientDetails';
+import {useCallback} from 'react';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
 
 function App() {
-  const [ingredients, setIngedients] = React.useState([]);
-  
+  const dispatch = useDispatch();
+
   React.useEffect(() => {
-    ingredientsData.getData()
-      .then(({ success, data }) => {
-        if (success) {
-          setIngedients(data)
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, []);
+    dispatch(getBurgerIngredients())
+  }, [dispatch])
+
+  const ingredients = useSelector(state => state.burgerIngredients.burgerIngredients);
   
-  console.log(ingredients);
+
+  const openIngredientDetailsModal = useSelector(state => state.ingredientDetails.ingredientDetails);
+  const idIngredientsList = (ingredients.map((item) => item._id))
   
   const [openModal, setOpenModal] = React.useState(false);
-  const [item, setItem] = React.useState(false);
-  
-  const handleIngredientClick = (item) => {
-    setItem(item)
-    setOpenModal(!openModal);
-  }
   
   const handleOrderButtonClick = () => {
-    setItem(false);
-    setOpenModal(!openModal);
+    setOpenModal(!openModal)
+    dispatch(getOrderDetails(idIngredientsList))
   }
+
+  const closeIngredientsModal = useCallback(() => {
+    dispatch(deleteIgredientDetails())
+  }, [dispatch])
 
   const closeModal = () => {
     setOpenModal(!openModal);
@@ -44,17 +44,23 @@ function App() {
   
   
   return (
-    <>
+    <DndProvider backend={HTML5Backend}>
       <AppHeader />
       <main className={styles.main}>
-        <BurgerIngredients ingredients={ingredients} handleIngredientClick={handleIngredientClick} />
+        <BurgerIngredients />
         <BurgerConstructor handleOrderButtonClick={handleOrderButtonClick} />
       </main>
-      {openModal && <Modal onClose={closeModal} >
-        {Boolean(item) ? <IngredientDetails ingredient={item} /> :
-          <OrderDetails />}
-      </Modal>}
-    </>
+      {Boolean(openIngredientDetailsModal) && (
+        <Modal onClose={closeIngredientsModal}>
+          <IngredientDetails />
+        </Modal>
+      )}
+      {openModal && (
+        <Modal onClose={closeModal}>
+          <OrderDetails />
+        </Modal>
+      )}
+    </DndProvider>
   );
 }
 
