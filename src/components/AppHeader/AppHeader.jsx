@@ -1,35 +1,40 @@
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './AppHeader.module.css';
+import { NavLink, useRouteMatch } from "react-router-dom";
 
 export function AppHeader() {
+    const isConstructor = useRouteMatch({ path: "/", exact: true });
+    const isFeed = useRouteMatch({ path: "/feed" });
+    const isProfile = useRouteMatch({ path: "/profile" });
+
     return (
         <header className={styles.header}>
             <nav>
                 <ul className={styles.nav}>
                     <div className={styles.menus}>
                         <li className="pl-5 pr-5 pt-4 pb-4">
-                            <a href="#" className={styles.block}>
-                                <BurgerIcon type="primary" />
-                                <p className="text text_type_main-default">Конструктор</p>
-                            </a>
+                            <NavLink to='/' className={`${styles.block} pl-5 pr-5 pt-4 pb-4`}>
+                                <BurgerIcon type={isConstructor ? 'primary' : 'secondary'} />
+                                <p className={isConstructor ? "text text_type_main-default" : "text text_type_main-default text_color_inactive"}>Конструктор</p>
+                            </NavLink>
                         </li>
                         <li className="pl-5 pr-5 pt-4 pb-4">
-                            <a href="#" className={styles.block}>
-                                <ListIcon type="secondary" />
-                                <p className="text text_type_main-default text_color_inactive">Лента заказов</p>
-                            </a>
+                            <NavLink to='/feed' className={`${styles.block} pl-5 pr-5 pt-4 pb-4`}>
+                                <ListIcon type={isFeed ? 'primary' : 'secondary'} />
+                                <p className={isFeed ? "text text_type_main-default" : "text text_type_main-default text_color_inactive"}>Лента заказов</p>
+                            </NavLink>
                         </li>
                     </div>
                     <li>
-                        <a href="#">
+                        <NavLink to='/'>
                             <Logo />
-                        </a>
+                        </NavLink>
                     </li>
                     <li className={styles.login}>
-                        <a href="#" className={`${styles.block} pl-5 pr-5 pt-4 pb-4`}>
-                            <ProfileIcon type="secondary" />
-                            <p className="text text_type_main-default text_color_inactive">Личный кабинет</p>
-                        </a>
+                        <NavLink to='/profile' className={`${styles.block} pl-5 pr-5 pt-4 pb-4`} >
+                            <ProfileIcon type={isProfile ? 'primary' : 'secondary'} />
+                            <p className={isProfile ? "text text_type_main-default" : "text text_type_main-default text_color_inactive"}>Личный кабинет</p>
+                        </NavLink>
                     </li>
                 </ul>
             </nav>
