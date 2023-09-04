@@ -6,8 +6,11 @@ import { addIgredientDetails } from '../../services/action/ingredientDetails';
 import { useDrag } from 'react-dnd';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-export default function BurgerIngredientsItem({ ingredient }) {
+export function BurgerIngredientsItem({ ingredient }) {
+    const location = useLocation();
+
     const main = useSelector(state => state.burgerConstructor.mainList)
     const buns = useSelector(state => state.burgerConstructor.bunsList)
 
@@ -18,6 +21,7 @@ export default function BurgerIngredientsItem({ ingredient }) {
     const dispatch = useDispatch();
     const handleIngredientClick = () => {
         dispatch(addIgredientDetails(ingredient))
+        sessionStorage.setItem('ingredient', JSON.stringify(ingredient))
     }
 
     const [, dragIngredient] = useDrag(() => ({
@@ -29,15 +33,22 @@ export default function BurgerIngredientsItem({ ingredient }) {
         },
     }), [])
 
+
     return (
         <article className={styles.item} onClick={handleIngredientClick} ref={dragIngredient}>
-            {counter > 0 ? <Counter count={counter} size="default" /> : null}
-            <img className="ml-4 mr-4" src={ingredient.image} alt={ingredient.name} />
-            <div className={`${styles.price} mt-2 mb-2`}>
-                <p className="text text_type_digits-default">{ingredient.price}</p>
-                <CurrencyIcon type="primary" />
-            </div>
-            <p className={`${styles.subtitle} text text_type_main-default`}>{ingredient.name}</p>
+            <Link to={{
+                pathname: `/ingredients/${ingredient._id}`,
+                state: { background: location },
+            }}
+            className={`${styles.link} text text_type_main-default`}>
+                {counter > 0 ? <Counter count={counter} size="default" /> : null}
+                <img className="ml-4 mr-4" src={ingredient.image} alt={ingredient.name} />
+                <div className={`${styles.price} mt-2 mb-2`}>
+                    <p className="text text_type_digits-default">{ingredient.price}</p>
+                    <CurrencyIcon type="primary" />
+                </div>
+                <p className={`${styles.subtitle} text text_type_main-default`}>{ingredient.name}</p>
+            </Link>
         </article>
     )
 }

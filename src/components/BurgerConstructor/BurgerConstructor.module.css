@@ -1,27 +1,37 @@
-.burger-constructor {
+.burger_constructor {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    box-sizing: border-box;
+    align-items: end;
 }
 
-.list {
+.order_list {
     margin-top: 0;
     margin-bottom: 0;
     list-style-type: none;
 }
 
-.scroll {
-    height: 400px;
+.order_cost svg {
+    width: 33px;
+    height: 33px;
+    object-position: center;
+}
+
+.scroll_right {
+    min-height: 0;
+    max-height: 464px;
     overflow: hidden;
     overflow-y: auto;
     overflow-x: hidden;
+    display: grid;
+    gap: 16px;
 }
 
-.scroll::-webkit-scrollbar {
+.scroll_right::-webkit-scrollbar {
     width: 8px;
-    background-color: rgb(47, 47, 55);
+    background-color: #2F2F37;
 }
 
-.scroll::-webkit-scrollbar-thumb {
-    background-color: rgb(133, 133, 173);
+.scroll_right::-webkit-scrollbar-thumb {
+    background-color: #8585AD;
 }
