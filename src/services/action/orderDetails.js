@@ -9,7 +9,7 @@ export const getOrderSuccess = (number) => ({ type: GET_ORDER_DETAILS_SUCCESS, p
 
 export function getOrderDetails(idIngredientsList) {
     return (dispatch) =>
-    apiBurger.getOrderData(idIngredientsList)
+        apiBurger.getOrderDetails(idIngredientsList)
             .then(({ order: { number } }) => {
                 dispatch(getOrderSuccess(number));
             })
