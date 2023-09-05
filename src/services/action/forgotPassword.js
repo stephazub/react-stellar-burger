@@ -1,4 +1,4 @@
-import { apiData } from "../../utils/api/api";
+import { apiBurger } from "../../utils/api/api";
 
 
 export const FORGOT_PASSWORD_REQUEST = 'FORGOT_PASSWORD_REQUEST';
@@ -9,7 +9,7 @@ const forgotPasswordSuccess = (payload) => ({ type: FORGOT_PASSWORD_SUCCESS, pay
 
 export function forgotPassword(email) {
     return (dispatch) =>
-        apiData.forgot(email)
+    apiBurger.forgot(email)
             .then(({ success }) => {
                 dispatch(forgotPasswordSuccess(success));
             })

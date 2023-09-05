@@ -1,4 +1,4 @@
-import { apiData } from "../../utils/api/api";
+import { apiBurger } from "../../utils/api/api";
 
 export const USER_REGISTRATION_REQUEST = 'USER_REGISTRATION_REQUEST';
 export const USER_REGISTRATION_SUCCESS = 'USER_REGISTRATION_SUCCESS';
@@ -8,7 +8,7 @@ const userRegistrationSuccess = (payload) => ({ type: USER_REGISTRATION_SUCCESS,
 
 export function userRegistration(name, email, password) {
     return (dispatch) =>
-        apiData.registration(name, email, password)
+    apiBurger.registration(name, email, password)
             .then((res) => {
                 dispatch(userRegistrationSuccess(res));
             })

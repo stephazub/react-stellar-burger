@@ -1,13 +1,12 @@
-.order {
+.order_registration {
     display: grid;
     grid-template-columns: repeat(2, max-content);
     grid-template-rows: 64px;
-    justify-content: end;
+    gap: 42px;
     align-items: center;
-    gap: 40px;
 }
 
-.price {
+.order_cost {
     display: flex;
     align-items: center;
 }

@@ -1,4 +1,4 @@
-import { apiData } from "../../utils/api/api";
+import { apiBurger } from "../../utils/api/api";
 import { deleteCookie } from "../../utils/cookies";
 
 export const USER_LOGOUT_REQUEST = 'USER_LOGOUT_REQUEST';
@@ -9,7 +9,7 @@ const userLogoutSuccess = (payload) => ({ type: USER_LOGOUT_SUCCESS, payload })
 
 export function userLogout() {
     return (dispatch) =>
-        apiData.logout()
+    apiBurger.logout()
             .then(({ success }) => {
                 if (success) {
                     deleteCookie('access');

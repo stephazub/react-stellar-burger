@@ -1,73 +1,77 @@
 import styles from './BurgerIngredientsSets.module.css';
-import BurgerIngredientsSet from '../BurgerIngredientsSet/BurgerIngredientsSet';
-import { useDispatch, useSelector } from 'react-redux';
 import { useRef, useEffect } from 'react';
-import { setActiveTab } from '../../services/action/burgerIngredientsTab';
+import { useDispatch, useSelector } from 'react-redux';
+import BurgerIngredientsSet from '../BurgerIngredientsSet/BurgerIngredientsSet';
+import { setActiveTab } from '../../services/action/burgerIngredientsScroll';
 
-export default function BurgerIngredientsSets() {
+export function BurgerIngredientsSets() {
+
     const dispatch = useDispatch()
-    const tab = useSelector(state => state.ingredientsTab.tab)
+    const scroll = useSelector(state => state.scrollIngredients.scroll)
 
     const bunRef = useRef();
     const sauceRef = useRef();
     const mainRef = useRef();
-    const tabRef = useRef();
+    const scrollRef = useRef();
 
     useEffect(() => {
-        if (tab === 'bun') {
+        if (scroll === 'bun') {
             bunRef.current.scrollIntoView({ behavior: 'smooth' })
         }
-        if (tab === 'sauce') {
+        if (scroll === 'sauce') {
             sauceRef.current.scrollIntoView({ behavior: 'smooth' })
         }
-        if (tab === 'main') {
+        if (scroll === 'main') {
             mainRef.current.scrollIntoView({ behavior: 'smooth' })
         }
-    }, [tab]);
+    }, [scroll])
 
     useEffect(() => {
-        const sets = [bunRef.current, sauceRef.current, mainRef.current]
-        
-        const observer = new IntersectionObserver((sets) => {
-            sets.forEach((set) => {
-                if (set.target === bunRef.current) {
+        const headings = [
+            mainRef.current,
+            sauceRef.current,
+            bunRef.current
+        ]
+        const observer = new IntersectionObserver((headings) => {
+            headings.forEach((heading) => {
+                if (heading.target === bunRef.current) {
                     dispatch(setActiveTab('bun'))
                 }
-                if (set.target === sauceRef.current) {
+                if (heading.target === sauceRef.current) {
                     dispatch(setActiveTab('sauce'))
                 }
-                if (set.target === mainRef.current) {
+                if (heading.target === mainRef.current) {
                     dispatch(setActiveTab('main'))
                 }
             })
 
         },
             {
-                root: tabRef.current,
-                rootMargin: '0px',
-                threshold: 1
+                root: scrollRef.current,
+                rootMargin: '0px 0px -90% 0px'
             })
-            sets.forEach((set) => observer.observe(set))
+        headings.forEach((heading) => observer.observe(heading))
 
     }, [dispatch])
 
+
     return (
-        <div className={`${styles.scroll} mt-10 pr-2`} ref={tabRef}>
+        <div className={`${styles.scroll_left} mt-10 pr-2`} ref={scrollRef}>
             <div>
-                <h2 className="text text_type_main-medium  mb-6" ref={bunRef}>Булки</h2>
-                <ul className={`${styles.ingredients} pl-4`} >
-                    <BurgerIngredientsSet type='bun'/>
+                <h3 className="text text_type_main-medium mb-6" ref={bunRef}>Булки</h3>
+                <ul className={`${styles.list} pl-4`}>
+                    <BurgerIngredientsSet type='bun' />
                 </ul>
             </div>
             <div>
-                <h2 className="text text_type_main-medium mt-10 mb-6" ref={sauceRef}>Соусы</h2>
-                <ul className={`${styles.ingredients} pl-4`} >
+                <h3 className="text text_type_main-medium mt-10 mb-6" ref={sauceRef}>Соусы</h3>
+                <ul className={`${styles.list} pl-4`}>
                     <BurgerIngredientsSet type='sauce' />
                 </ul>
             </div>
             <div>
-                <h2 className="text text_type_main-medium mt-10 mb-6" ref={mainRef}>Начинки</h2>
-                <ul className={`${styles.ingredients} pl-4`} >
+                <h3 className="text text_type_main-medium mt-10 mb-6" ref={mainRef}>Начинки</h3>
+                <ul className={`${styles.list} pl-4`}>
                     <BurgerIngredientsSet type='main' />
                 </ul>
             </div>

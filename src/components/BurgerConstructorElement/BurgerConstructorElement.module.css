@@ -1,6 +1,6 @@
-.item {
+.constructor_element {
     display: grid;
     grid-template-columns: max-content 536px;
-    align-items: center;
     gap: 8px;
+    align-items: center;
 }

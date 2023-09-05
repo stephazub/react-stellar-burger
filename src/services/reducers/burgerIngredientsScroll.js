@@ -1,14 +1,14 @@
 import {
     SET_ACTIVE_TAB,
-    TAB_INGREDIENTS
-} from '../action/burgerIngredientsTab'
+    SCROLL_INGREDIENTS
+} from '../action/burgerIngredientsScroll'
 
-const tabState = {
-    current: 'sauce',
-    tab: 'bun'
+const initialState = {
+    current: 'bun',
+    scroll: 'bun'
 }
 
-export const ingredientsTabReducer = (state = tabState, action) => {
+export const scrollIngredientsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_ACTIVE_TAB: {
             return {
@@ -16,10 +16,10 @@ export const ingredientsTabReducer = (state = tabState, action) => {
                 current: action.payload
             }
         }
-        case TAB_INGREDIENTS: {
+        case SCROLL_INGREDIENTS: {
             return {
                 ...state,
-                tab: action.payload
+                scroll: action.payload
             }
         }
         default: {

@@ -1,4 +1,4 @@
-import { apiData } from "../../utils/api/api";
+import { apiBurger } from "../../utils/api/api";
 import { clearConstructor } from "./burgerConstructor";
 
 export const GET_ORDER_DETAILS_REQUEST = 'GET_ORDER_REQUEST';
@@ -9,7 +9,7 @@ export const getOrderSuccess = (number) => ({ type: GET_ORDER_DETAILS_SUCCESS, p
 
 export function getOrderDetails(idIngredientsList) {
     return (dispatch) =>
-        apiData.getOrderData(idIngredientsList)
+    apiBurger.getOrderData(idIngredientsList)
             .then(({ order: { number } }) => {
                 dispatch(getOrderSuccess(number));
             })

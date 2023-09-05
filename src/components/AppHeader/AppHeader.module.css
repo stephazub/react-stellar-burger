@@ -2,40 +2,50 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(28, 28, 33, 1);
+    background-color: #1C1C21;
     max-width: 1920px;
     min-height: 88px;
     margin: 0 auto;
 }
 
-.nav {
-    list-style-type: none;
-    display: grid;
+.navigation {
+    display: flex;
     justify-content: space-between;
-    grid-template-columns: 1fr 290px 1fr;
-    align-items: center;
-    width: 1240px;
-    padding: 0;
-    margin: 0;
 }
 
-.menus {
+.list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 290px 1fr;
+    align-items: center;
+    width: 1280px;
+    justify-content: space-between;
+}
+
+.columns {
     display: grid;
     grid-template-columns: 178px 197px;
     grid-template-rows: 56px;
     gap: 8px;
 }
 
-.block {
+.link {
     display: grid;
     grid-template-columns: repeat(2, max-content);
-    align-content: center;
     gap: 8px;
     text-decoration: none;
-    color: rgba(242, 242, 243, 1);
+    align-content: center;
+    color: #F2F2F3;
 }
 
-.login {
+.link:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    border-radius: 40px;
+}
+
+.personal_account {
     display: grid;
     grid-template-columns: 207px;
     grid-template-rows: 56px;

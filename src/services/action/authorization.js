@@ -1,4 +1,4 @@
-import { apiData } from "../../utils/api/api";
+import { apiBurger } from "../../utils/api/api";
 import { setCookie } from "../../utils/cookies";
 
 export const USER_AUTHORIZATION_REQUEST = 'USER_AUTHORIZATION_REQUEST';
@@ -9,7 +9,7 @@ const userAuthorizationSuccess = (payload) => ({ type: USER_AUTHORIZATION_SUCCES
 
 export function userAuthorization(email, password) {
     return (dispatch) =>
-        apiData.authorization(email, password)
+        apiBurger.authorization(email, password)
             .then((data) => {
                 const { success, refreshToken, accessToken } = data
                 if (success) {

@@ -1,4 +1,4 @@
-import { apiData } from "../../utils/api/api";
+import { apiBurger } from "../../utils/api/api";
 
 export const GET_USER_REQUEST = 'GET_USER_REQUEST';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
@@ -12,7 +12,7 @@ const getUserSuccess = (payload) => ({ type: GET_USER_SUCCESS, payload})
 
 export function getUser() {
     return (dispatch) =>
-        apiData.getProfile()
+    apiBurger.getProfile()
             .then((data) => {
                 dispatch(getUserSuccess(data));
             })
@@ -25,7 +25,7 @@ const updateUserSuccess = (payload) => ({ type: UPDATE_USER_SUCCESS, payload })
 
 export function updateUser(name, email, password) {
     return (dispatch) =>
-        apiData.updateProfile(name, email, password)
+    apiBurger.updateProfile(name, email, password)
             .then((data) => {
                 dispatch(updateUserSuccess(data));
             })

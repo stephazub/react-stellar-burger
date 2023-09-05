@@ -7,7 +7,7 @@ import { nanoid } from 'nanoid';
 import { setBun, addIngredient } from '../../services/action/burgerConstructor';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
-import { BurgerConstructorItem } from '../BurgerConstructorItem/BurgerConstructorItem';
+import { BurgerConstructorElement} from '../BurgerConstructorElement/BurgerConstructorElement';
 import { deleteIngredient } from '../../services/action/burgerConstructor';
 import { getOrderDetails } from '../../services/action/orderDetails';
 import Modal from '../Modal/Modal';
@@ -79,7 +79,7 @@ export function BurgerConstructor() {
                     {main.map((element, index) => {
                         if (element.type !== 'bun')
                             return (
-                                <BurgerConstructorItem
+                                <BurgerConstructorElement
                                     element={element}
                                     index={index}
                                     id={element.id}
@@ -106,9 +106,9 @@ export function BurgerConstructor() {
                 }
                 )}
             </ul>
-            {buns.length > 0 ?
+            
                 <OrderRegistration handleOrderClick={handleOrderClick} />
-                : null}
+                
             {openModal && (
                 <Modal onClose={closeModal}>
                     <OrderDetails />

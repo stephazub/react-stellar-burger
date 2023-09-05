@@ -3,7 +3,7 @@ import { burgerIngredientsReducer } from './burgerIngredients';
 import { ingredientDetailsReducer } from './ingredientDetails';
 import { burgerConstructorReducer } from './burgerConstructor';
 import { orderDetailsReducer } from './orderDetails';
-import { ingredientsTabReducer } from './burgerIngredientsTab';
+import { scrollIngredientsReducer } from './burgerIngredientsScroll';
 import { userRegistrationReducer } from './registration';
 import { forgotPasswordReducer } from './forgotPassword';
 import { resetPasswordReducer } from './resetPassword';
@@ -15,7 +15,7 @@ export const rootReducer = combineReducers({
     ingredientDetails: ingredientDetailsReducer,
     burgerConstructor: burgerConstructorReducer,
     orderDetails: orderDetailsReducer,
-    scrollIngredients: ingredientsTabReducer,
+    scrollIngredients: scrollIngredientsReducer,
     registration: userRegistrationReducer,
     forgotPassword: forgotPasswordReducer,
     resetPassword: resetPasswordReducer,
