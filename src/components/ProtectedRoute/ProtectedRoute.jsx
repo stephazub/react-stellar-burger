@@ -2,7 +2,6 @@ import { Route, Redirect, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export const ProtectedRoute = ({ component, path }) => {
-  //   const login = JSON.parse(sessionStorage.getItem('login'));
   const authorization = useSelector((state) => state.userAuthorization.authorization);
   const location = useLocation();
 

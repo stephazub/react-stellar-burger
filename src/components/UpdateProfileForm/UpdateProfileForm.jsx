@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './UpdateProfileForm.module.css';
-import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, updateUser } from '../../services/action/user';
 

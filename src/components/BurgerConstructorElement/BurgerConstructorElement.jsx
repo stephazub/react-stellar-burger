@@ -25,7 +25,6 @@ export function BurgerConstructorElement({ deleteElement, element, id, index }) 
             }
             const dragIndex = item.index
             const hoverIndex = index
-            // Не заменяйте предметы самими собой
             if (dragIndex === hoverIndex) {
                 return
             }

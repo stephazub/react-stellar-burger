@@ -1,5 +1,5 @@
 import styles from './pages.module.css';
-import IngredientDetails from '../components/IngredientDetails/IngredientDetails';
+import { IngredientDetails } from '../components/IngredientDetails/IngredientDetails';
 
 export function IngredientInfo() {
 

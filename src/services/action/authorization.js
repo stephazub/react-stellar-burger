@@ -13,7 +13,6 @@ export function userAuthorization(email, password) {
             .then((data) => {
                 const { success, refreshToken, accessToken } = data
                 if (success) {
-                    // sessionStorage.setItem('authorization', JSON.stringify(true));
                     setCookie('access', accessToken.split('Bearer ')[1]);
                     setCookie('refresh', refreshToken);
                     dispatch(userAuthorizationSuccess(data));

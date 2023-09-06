@@ -1,19 +1,19 @@
 import { getCookie } from "../cookies";
 
 export const config = {
-  baseUrl: 'https://norma.nomoreparties.space/api', // базовый путь к серверу
+  baseUrl: 'https://norma.nomoreparties.space/api',
   defaultHeaders: {
     'Content-Type': 'application/json'
   },
-  ingredients: '/ingredients', // эндпоинт ингредиентов
-  order: '/orders', // эндпоинт номера заказа
-  registration: '/auth/register', // эндпоинт регистрации
-  authorization: '/auth/login', //эндпоинт авторизации
-  logout: '/auth/logout', // эндпоинт выхода из системы
-  token: '/auth/token', // эндпоинт обновления токена
-  forgot: '/password-reset', // эндпоинт восстановления пароля
-  reset: '/password-reset/reset', // эндпоинт создания нового пароля
-  user: '/auth/user', // эндпоинт получения и обновления данных пользователя
+  ingredients: '/ingredients',
+  order: '/orders',
+  registration: '/auth/register',
+  authorization: '/auth/login',
+  logout: '/auth/logout',
+  token: '/auth/token',
+  forgot: '/password-reset',
+  reset: '/password-reset/reset',
+  user: '/auth/user',
 };
 
 class Api {
@@ -38,7 +38,6 @@ class Api {
     this._userEndpoint = user;
   }
 
-  // сборка конечного url 
   _makeUrl(endpoint) {
     return `${this._baseUrl}${endpoint}`;
   }
@@ -59,9 +58,8 @@ class Api {
       .then(this._handleResponse)
   }
 
-  // получатель ингредиентов
   getBurgerIngredients() {
-    const options = { // объект опций для fetch
+    const options = {
       method: 'GET',
       headers: this._defaultHeaders
     }

@@ -1,25 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ProfileMenu.module.css';
-import { NavLink, useHistory, Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { userLogout } from '../../services/action/logout';
 
 
 export function ProfileMenu() {
 
     const dispatch = useDispatch();
-    const history = useHistory();
     const authorization = useSelector((state) => state.userAuthorization.authorization);
 
     const handleLogout = React.useCallback(() => {
         dispatch(userLogout());
     }, [dispatch])
-
-    // React.useEffect(() => {
-    //     if (!authorization) {
-    //         history.push('/login')
-    //     }
-    // }, [authorization, history])
 
     if (!authorization) {
         return (

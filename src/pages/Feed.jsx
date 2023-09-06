@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './pages.module.css';
 import { Redirect } from 'react-router-dom';

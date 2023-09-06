@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppHeader } from '../AppHeader/AppHeader';
 import Modal from '../Modal/Modal';
-import IngredientDetails from '../IngredientDetails/IngredientDetails';
+import { IngredientDetails } from '../IngredientDetails/IngredientDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBurgerIngredients } from '../../services/action/burgerIngredients';
 import { deleteIgredientDetails } from '../../services/action/ingredientDetails';
@@ -19,6 +19,7 @@ import { ResetPassword } from '../../pages/ResetPassword';
 
 
 export default function App() {
+
   const dispatch = useDispatch();
   const location = useLocation();
   const background = location.state && location.state.background;
@@ -27,11 +28,11 @@ export default function App() {
     dispatch(getBurgerIngredients())
   }, [dispatch])
 
-
-  const openIngredientDetailsModal = useSelector(state => state.ingredientDetails.ingredientDetails);
-
+  
+  const openIngredientDetailsModal = useSelector(state => !!state.ingredientDetails.ingredientDetails);
   const closeIngredientsModal = useCallback(() => {
     dispatch(deleteIgredientDetails())
+    window.history.pushState(null, '', '/')
   }, [dispatch])
 
 
@@ -46,9 +47,7 @@ export default function App() {
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/reset-password" component={ResetPassword} />
         <ProtectedRoute path="/profile" component={Profile} />
-        <Route path="/ingredients/:id" >
-          <IngredientInfo />
-        </Route>
+        <Route path="/ingredients/:id" component={IngredientInfo} />
         <ProtectedRoute path="/feed" component={Feed} />
       </Switch>
 
@@ -64,5 +63,6 @@ export default function App() {
         </>
       )}
     </>
-  );
+  )
 }
+

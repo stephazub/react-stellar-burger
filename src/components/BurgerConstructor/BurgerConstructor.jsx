@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './BurgerConstructor.module.css';
-import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 import { OrderRegistration } from '../OrderRegistration/OrderRegistration';
 import { useDrop } from 'react-dnd';
 import { nanoid } from 'nanoid';
 import { setBun, addIngredient } from '../../services/action/burgerConstructor';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { BurgerConstructorElement} from '../BurgerConstructorElement/BurgerConstructorElement';
 import { deleteIngredient } from '../../services/action/burgerConstructor';
 import { getOrderDetails } from '../../services/action/orderDetails';
