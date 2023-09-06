@@ -3,12 +3,11 @@ import { BurgerIngredientsTabs} from '../BurgerIngredientsTab/BurgerIngredientsT
 import { BurgerIngredientsSets } from '../BurgerIngredientsSets/BurgerIngredientsSets'
 
 export default function BurgerIngredients() {
-    return (
-        <section className={styles.ingredients}>
-          <h1 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h1>
+  return (
+      <section className={styles.burger_ingredients}>
+          <h2 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h2>
           <BurgerIngredientsTabs />
           <BurgerIngredientsSets />
-        </section>
-    )
-};
-
+      </section>
+  )
+}

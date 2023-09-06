@@ -106,9 +106,9 @@ export function BurgerConstructor() {
                 }
                 )}
             </ul>
-            
+            {buns.length > 0 ?
                 <OrderRegistration handleOrderClick={handleOrderClick} />
-                
+                : null}
             {openModal && (
                 <Modal onClose={closeModal}>
                     <OrderDetails />

@@ -9,18 +9,18 @@ import { PropTypes } from 'prop-types';
 export default function Modal({ children, onClose }) {
 
     React.useEffect(() => {
-        function onEscapeDown(e) {
+        function onKeyDown(e) {
             if (e.key === 'Escape') {
                 onClose()
             }
         }
 
-        document.addEventListener('keydown', onEscapeDown)
+        document.addEventListener('keydown', onKeyDown)
 
         return () => {
-            document.removeEventListener('keydown', onEscapeDown)
+            document.removeEventListener('keydown', onKeyDown)
         }
-    }, [onClose])
+    }, [])
 
     return createPortal(
         <>

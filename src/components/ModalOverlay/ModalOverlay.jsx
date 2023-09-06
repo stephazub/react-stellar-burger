@@ -3,14 +3,14 @@ import { PropTypes } from 'prop-types';
 
 export default function ModalOverlay({ onClose }) {
 
-    const closeModal = (evt) => {
+    const closeModalOverlay = (evt) => {
         if (evt.target.classList.contains(styles.overlay)) {
             onClose()
         }
     }
 
     return (
-        <div className={styles.overlay} onClick={closeModal}>
+        <div className={styles.overlay} onClick={closeModalOverlay}>
         </div>
     )
 }

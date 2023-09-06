@@ -47,7 +47,7 @@ export default function App() {
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/reset-password" component={ResetPassword} />
         <ProtectedRoute path="/profile" component={Profile} />
-        <Route path="/ingredients/:id" component={IngredientInfo} />
+        <Route path="/ingredients/:id" component={IngredientInfo}/>
         <ProtectedRoute path="/feed" component={Feed} />
       </Switch>
 
